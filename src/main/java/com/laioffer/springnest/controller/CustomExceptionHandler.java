@@ -1,5 +1,6 @@
 package com.laioffer.springnest.controller;
 
+import com.laioffer.springnest.exception.GCSUploadException;
 import com.laioffer.springnest.exception.StayNotExistException;
 import com.laioffer.springnest.exception.UserAlreadyExistException;
 import com.laioffer.springnest.exception.UserNotExistException;
@@ -12,18 +13,27 @@ import org.springframework.web.context.request.WebRequest;
 @ControllerAdvice
 public class CustomExceptionHandler {
 
+
     @ExceptionHandler(UserAlreadyExistException.class)
     public final ResponseEntity<String> handleUserAlreadyExistExceptions(Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
+
 
     @ExceptionHandler(UserNotExistException.class)
     public final ResponseEntity<String> handleUserNotExistExceptions(Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 
+
     @ExceptionHandler(StayNotExistException.class)
     public final ResponseEntity<String> handleStayNotExistExceptions(Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+
+    @ExceptionHandler(GCSUploadException.class)
+    public final ResponseEntity<String> handleGCSUploadExceptions(Exception ex, WebRequest request) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
