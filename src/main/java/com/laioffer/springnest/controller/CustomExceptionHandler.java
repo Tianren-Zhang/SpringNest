@@ -1,9 +1,6 @@
 package com.laioffer.springnest.controller;
 
-import com.laioffer.springnest.exception.GCSUploadException;
-import com.laioffer.springnest.exception.StayNotExistException;
-import com.laioffer.springnest.exception.UserAlreadyExistException;
-import com.laioffer.springnest.exception.UserNotExistException;
+import com.laioffer.springnest.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -36,4 +33,10 @@ public class CustomExceptionHandler {
     public final ResponseEntity<String> handleGCSUploadExceptions(Exception ex, WebRequest request) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(InvalidSearchDateException.class)
+    public final ResponseEntity<String> handleInvalidSearchDateExceptions(Exception ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 }
