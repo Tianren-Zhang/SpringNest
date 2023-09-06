@@ -11,8 +11,8 @@
     <groupId>com.laioffer</groupId>
     <artifactId>staybooking</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springnest</name>
-    <description>springnest</description>
+    <name>staybooking</name>
+    <description>staybooking</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -57,9 +57,8 @@
             <version>2.22.2</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-elasticsearch</artifactId>
-            <version>4.3.2</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.maps</groupId>

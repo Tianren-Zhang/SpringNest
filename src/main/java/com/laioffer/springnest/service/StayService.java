@@ -1,15 +1,16 @@
 package com.laioffer.springnest.service;
 
 import com.laioffer.springnest.exception.StayNotExistException;
+import com.laioffer.springnest.model.Location;
 import com.laioffer.springnest.model.Stay;
 import com.laioffer.springnest.model.StayImage;
 import com.laioffer.springnest.model.User;
+import com.laioffer.springnest.repository.LocationRepository;
 import com.laioffer.springnest.repository.StayRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,11 +22,15 @@ public class StayService {
 
     private final ImageStorageService imageStorageService;
     private final StayRepository stayRepository;
+    private final GeoCodingService geoCodingService;
+    private final LocationRepository locationRepository;
 
 
-    public StayService(ImageStorageService imageStorageService, StayRepository stayRepository) {
+    public StayService(ImageStorageService imageStorageService, StayRepository stayRepository, GeoCodingService geoCodingService, LocationRepository locationRepository) {
         this.imageStorageService = imageStorageService;
         this.stayRepository = stayRepository;
+        this.geoCodingService = geoCodingService;
+        this.locationRepository = locationRepository;
     }
 
 
@@ -43,6 +48,7 @@ public class StayService {
     }
 
 
+    @Transactional
     public void add(Stay stay, MultipartFile[] images) {
         List<StayImage> stayImages = Arrays.stream(images)
                 .filter(image -> !image.isEmpty())
@@ -52,6 +58,10 @@ public class StayService {
                 .collect(Collectors.toList());
         stay.setImages(stayImages);
         stayRepository.save(stay);
+
+
+        Location location = geoCodingService.getLatLng(stay.getId(), stay.getAddress());
+        locationRepository.save(location);
     }
 
 
@@ -63,6 +73,3 @@ public class StayService {
         stayRepository.deleteById(stayId);
     }
 }
-
-
-
