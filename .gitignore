@@ -52,3 +52,4 @@ mvnw.cmd
 # Gradle specific
 .gradle/
 /build/
+/front-end/springnest/node_modules/
