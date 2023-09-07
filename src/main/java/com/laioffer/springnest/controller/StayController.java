@@ -1,7 +1,9 @@
 package com.laioffer.springnest.controller;
 
+import com.laioffer.springnest.model.Reservation;
 import com.laioffer.springnest.model.Stay;
 import com.laioffer.springnest.model.User;
+import com.laioffer.springnest.service.ReservationService;
 import com.laioffer.springnest.service.StayService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,10 +18,12 @@ public class StayController {
 
 
     private final StayService stayService;
+    private final ReservationService reservationService;
 
 
-    public StayController(StayService stayService) {
+    public StayController(StayService stayService, ReservationService reservationService) {
         this.stayService = stayService;
+        this.reservationService = reservationService;
     }
 
 
@@ -59,6 +63,12 @@ public class StayController {
     @DeleteMapping("/stays/{stayId}")
     public void deleteStay(@PathVariable Long stayId, Principal principal) {
         stayService.delete(stayId, principal.getName());
+    }
+
+
+    @GetMapping(value = "/stays/reservations/{stayId}")
+    public List<Reservation> listReservations(@PathVariable Long stayId) {
+        return reservationService.listByStay(stayId);
     }
 }
 

@@ -1,16 +1,16 @@
 package com.laioffer.springnest.service;
 
+import com.laioffer.springnest.exception.StayDeleteException;
 import com.laioffer.springnest.exception.StayNotExistException;
-import com.laioffer.springnest.model.Location;
-import com.laioffer.springnest.model.Stay;
-import com.laioffer.springnest.model.StayImage;
-import com.laioffer.springnest.model.User;
+import com.laioffer.springnest.model.*;
 import com.laioffer.springnest.repository.LocationRepository;
+import com.laioffer.springnest.repository.ReservationRepository;
 import com.laioffer.springnest.repository.StayRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,13 +24,15 @@ public class StayService {
     private final StayRepository stayRepository;
     private final GeoCodingService geoCodingService;
     private final LocationRepository locationRepository;
+    private final ReservationRepository reservationRepository;
 
 
-    public StayService(ImageStorageService imageStorageService, StayRepository stayRepository, GeoCodingService geoCodingService, LocationRepository locationRepository) {
+    public StayService(ImageStorageService imageStorageService, StayRepository stayRepository, GeoCodingService geoCodingService, LocationRepository locationRepository, ReservationRepository reservationRepository) {
         this.imageStorageService = imageStorageService;
         this.stayRepository = stayRepository;
         this.geoCodingService = geoCodingService;
         this.locationRepository = locationRepository;
+        this.reservationRepository = reservationRepository;
     }
 
 
@@ -65,10 +67,16 @@ public class StayService {
     }
 
 
-    public void delete(Long stayId, String username) throws StayNotExistException {
+    public void delete(Long stayId, String username) throws StayNotExistException, StayDeleteException {
         Stay stay = stayRepository.findByIdAndHost(stayId, new User.Builder().setUsername(username).build());
         if (stay == null) {
             throw new StayNotExistException("Stay doesn't exist");
+        }
+
+
+        List<Reservation> reservations = reservationRepository.findByStayAndCheckoutDateAfter(stay, LocalDate.now());
+        if (reservations != null && !reservations.isEmpty()) {
+            throw new StayDeleteException("Cannot delete stay with active reservation");
         }
         stayRepository.deleteById(stayId);
     }
