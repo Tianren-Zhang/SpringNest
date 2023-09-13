@@ -1,4 +1,4 @@
-## SpringNest: Your Go - To Online Stay Rental Platform Built with React & Spring Boot
+## SpringNest: Your Go-To Online Stay Rental Platform Built with React & Spring Boot
 SpringNest is a responsive single-page application that offers a seamless user experience for stay rentals, powered by React and enhanced by AntD components. 
 
 With backend services built on Spring Boot, the platform supports essential features like stay uploads, deletions, reservations, and advanced search functionalities enabled by Elasticsearch geo-indexing.
