@@ -58,7 +58,7 @@ class App extends React.Component {
       <Layout style={{ height: "100vh" }}>
         <Header style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ fontSize: 25, fontWeight: 600, color: "white" }}>
-            AIRBNB Lite
+            Spring Nest
           </div>
           {this.state.authed && (
             <div>
