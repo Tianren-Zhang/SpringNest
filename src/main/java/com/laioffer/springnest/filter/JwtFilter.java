@@ -36,7 +36,14 @@ public class JwtFilter extends OncePerRequestFilter {
         this.jwtUtil = jwtUtil;
     }
 
-
+    /*
+    * First, it extracts the JWT from the Authorization header of the request.
+    * It then validates the JWT. If the JWT is valid and there's no existing authentication for the current context, it extracts the username from the JWT.
+    * Using the extracted username, the filter fetches the user's authorities (roles) from the database.
+    * A new authentication object (UsernamePasswordAuthenticationToken) is created using the username and authorities.
+    * This authentication object is then set in the SecurityContextHolder, effectively marking the user as authenticated for this request.
+    * Lastly, filterChain.doFilter(request, response); ensures that the request continues through any other filters and then to its intended destination (e.g., a controller).
+    */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String authorizationHeader = request.getHeader(HEADER);

@@ -24,7 +24,7 @@ public class RegisterService {
     }
 
     @Transactional
-    public void add(User user, UserRole role) {
+    public void add(User user, UserRole role) throws UserAlreadyExistException {
         if (userRepository.existsById(user.getUsername())) {
             throw new RuntimeException("User already exists");
         }

@@ -26,8 +26,6 @@ public class Stay {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User host;
-
-
     @JsonIgnore
     @OneToMany(mappedBy = "stay", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     private List<StayReservedDate> reservedDates;
