@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+// Spring Data JPA automatically provides implementations for these methods
 @Repository
 public interface StayRepository extends JpaRepository<Stay, Long> {
 

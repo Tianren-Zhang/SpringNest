@@ -26,6 +26,9 @@ public class Stay {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User host;
+
+    // This annotation configures how the association is loaded (LAZY means it's not loaded unless explicitly accessed)
+    // and how operations are cascaded from a Stay to its associated reserved dates.
     @JsonIgnore
     @OneToMany(mappedBy = "stay", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     private List<StayReservedDate> reservedDates;
@@ -95,7 +98,7 @@ public class Stay {
         return reservedDates;
     }
 
-
+    // The @JsonProperty annotations inside the Builder class tell Jackson how to map JSON properties to the builder methods when deserializing.
     public static class Builder {
 
 

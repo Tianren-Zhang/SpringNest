@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+// It's used to represent a composite primary key (a primary key composed of multiple columns) in the StayReservedDate entity.
 @Embeddable
 public class StayReservedDateKey implements Serializable
 {
@@ -35,6 +36,9 @@ public class StayReservedDateKey implements Serializable
         this.date = date;
     }
 
+
+    // The equals and hashCode are overridden to ensure that two StayReservedDateKey objects are considered equal if they have the same stay_id and date.
+    // This equality check is crucial for JPA to work correctly with composite primary keys.
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

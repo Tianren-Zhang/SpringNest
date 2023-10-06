@@ -39,6 +39,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        /* beginning of request authorization configurations.
+        * requests to any URL path under /register/ and /authenticate/ to be accessed by anyone
+        * restricts access to the /stays/* URL to only users with the "ROLE_HOST" authority
+        * /search, /reservations, /reservations/* can be access by guest
+        * any request not previously matched should be authenticated.
+        * disable Cross-Site Request Forgery (CSRF) protection, and add the JwtFilter
+         */
+
         http
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/register/*").permitAll()

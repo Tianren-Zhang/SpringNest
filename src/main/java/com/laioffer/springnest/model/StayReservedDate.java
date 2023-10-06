@@ -8,7 +8,9 @@ public class StayReservedDate {
 
     @EmbeddedId
     private StayReservedDateKey id;
+    // The stay_id in StayReservedDateKey corresponds to the ID of the Stay associated with a given StayReservedDate.
     @MapsId("stay_id")
+    // This relationship means that for one stay, there can be multiple reserved dates.
     @ManyToOne
     private Stay stay;
 
