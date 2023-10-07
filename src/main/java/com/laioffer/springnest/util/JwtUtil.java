@@ -9,12 +9,14 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.HashMap;
 
+// Provides utility functions for generating, parsing, and validating JWT tokens using the provided secret
 @Component
 public class JwtUtil {
 
     @Value("${jwt.secret}")
     private String secret;
 
+    // Generate the token, Sets the subject of the JWT, Sets the token's issuance time and expire time
     public String generateToken(String subject) {
         return Jwts.builder()
                 .setClaims(new HashMap<>())

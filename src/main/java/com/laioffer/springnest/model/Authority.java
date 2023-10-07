@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+// the table name in the database is "authority".
+// for User Authorization, Database Representation, Flexibility, and Integration with Security Frameworks
 @Entity
 @Table(name = "authority")
 public class Authority {

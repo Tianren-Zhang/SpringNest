@@ -24,7 +24,8 @@ public class AuthenticationService {
         this.jwtUtil = jwtUtil;
     }
 
-
+    // Authenticate users. Using Spring Security's AuthenticationManager to perform the authentication
+    // If successful, generates a JWT for the authenticated user.
     public Token authenticate(User user, UserRole role) throws UserNotExistException {
         Authentication auth = null;
         try {

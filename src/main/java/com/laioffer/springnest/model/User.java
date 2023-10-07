@@ -8,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/*
+* Designed to represent user information in the system, with JPA annotations facilitating its storage in a relational database
+* And Jackson annotations ensuring proper serialization/deserialization to/from JSON.
+*/
 @Entity
 @Table(name = "user")
 @JsonDeserialize(builder = User.Builder.class)
