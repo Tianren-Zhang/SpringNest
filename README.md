@@ -3,6 +3,11 @@ SpringNest is a responsive single-page application that offers a seamless user e
 
 With backend services built on Spring Boot, the platform supports essential features like stay uploads, deletions, reservations, and advanced search functionalities enabled by Elasticsearch geo-indexing.
 
+### You can find the Backend Structure and Data Structure here:
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Tianren-Zhang/image/twitch/SpringNest/Screenshot%202023-10-07%20at%2016.37.09.png" width="auto" height="400">
+  <img src="https://raw.githubusercontent.com/Tianren-Zhang/image/twitch/SpringNest/Screenshot%202023-10-02%20at%2010.18.01.png" width="auto" height="400">
+</p>
 ### The App provides several services:
 
 1. When logged in as a host, the dashboard displays accommodations previously uploaded by that host, who also has the capability to upload new lodging options.\
@@ -22,3 +27,4 @@ Guests have the option to make reservations for suitable accommodations.
 <img width="1100" alt="Screenshot 2023-09-10 at 17.17.54" src="https://raw.githubusercontent.com/Tianren-Zhang/image/twitch/SpringNest/Screenshot%202023-09-10%20at%2017.17.54.png">
 Guests can also view view their previously booked accommodations.
 <img width="1000" alt="Screenshot 2023-09-10 at 17.19.47" src="https://raw.githubusercontent.com/Tianren-Zhang/image/twitch/SpringNest/Screenshot%202023-09-10%20at%2017.19.47.png">
+

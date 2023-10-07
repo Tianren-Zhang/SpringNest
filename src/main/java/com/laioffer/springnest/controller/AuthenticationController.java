@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+// Provides two endpoints: one for guest authentication and one for host authentication.
 @RestController
 public class AuthenticationController {
 
