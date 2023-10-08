@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
+// Offers a mechanism to search for stays based on multiple criteria like location, date, and guest numbers.
+// Integrates multiple repositories to achieve this comprehensive search functionality.
 @Service
 public class SearchService {
     private final StayRepository stayRepository;

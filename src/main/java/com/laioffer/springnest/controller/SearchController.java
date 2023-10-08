@@ -16,7 +16,8 @@ import java.util.List;
 @RestController
 public class SearchController {
 
-
+    // Provides a REST endpoint /search for clients to search for stays based on multiple criteria,
+    // including the number of guests, check-in and check-out dates, latitude and longitude, and distance from a given point.
     private final SearchService searchService;
 
 
