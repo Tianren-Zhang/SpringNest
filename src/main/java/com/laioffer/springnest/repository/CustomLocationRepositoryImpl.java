@@ -11,7 +11,7 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+// Provides a custom method to search for Location documents in Elasticsearch based on geographic distance.
 public class CustomLocationRepositoryImpl implements CustomLocationRepository {
 
 
@@ -23,7 +23,7 @@ public class CustomLocationRepositoryImpl implements CustomLocationRepository {
         this.elasticsearchOperations = elasticsearchOperations;
     }
 
-
+    //  Search for Location documents within a certain distance from a given latitude and longitude.
     @Override
     public List<Long> searchByDistance(double lat, double lon, String distance) {
         if (distance == null || distance.isEmpty()) {

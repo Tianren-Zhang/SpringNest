@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.RestClients;
 
-
+// Install Elasticsearch on GCE Instance first
 @Configuration
 public class ElasticsearchConfig {
 

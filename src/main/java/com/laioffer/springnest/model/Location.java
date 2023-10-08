@@ -7,7 +7,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.elasticsearch.annotations.GeoPointField;
 import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 
-
+// The mode of Location that intended to be indexed into an Elasticsearch instance.
 @Document(indexName = "loc")
 public class Location {
 
@@ -16,6 +16,7 @@ public class Location {
     @Field(type = FieldType.Long)
     private Long id;
 
+    // This annotation marks the field as a geographical point which will be indexed into Elasticsearch as a geo point type, allowing for spatial searches
     @GeoPointField
     private GeoPoint geoPoint;
 

@@ -30,7 +30,7 @@ public class ImageStorageService {
         this.storage = storage;
     }
 
-
+    // Uploading images to GCS by providing a method that accepts a MultipartFile and returns the public URL of the uploaded image.
     public String save(MultipartFile file) throws GCSUploadException {
         String filename = UUID.randomUUID().toString();
         BlobInfo blobInfo = null;
