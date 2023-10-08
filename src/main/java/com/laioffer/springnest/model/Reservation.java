@@ -7,7 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-
+// Reservation model contains several field
+// id, check in date, check out date, guest number, and stay instance
 @Entity
 @Table(name = "reservation")
 @JsonDeserialize(builder = Reservation.Builder.class)

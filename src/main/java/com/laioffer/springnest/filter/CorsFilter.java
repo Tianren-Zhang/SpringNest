@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+// Handle CORS (Cross-Origin Resource Sharing) headers.
+// CORS is a security feature implemented by web browsers to prevent a range of potential security issues that can arise when web pages make requests to domains other than the one that served the web page.
+// This filter ensures that specific CORS headers are set, allowing the frontend application to interact with the backend API without running into CORS-related issues.
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter extends OncePerRequestFilter {

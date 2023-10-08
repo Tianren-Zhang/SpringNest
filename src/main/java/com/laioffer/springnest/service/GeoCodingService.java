@@ -25,7 +25,7 @@ public class GeoCodingService {
         this.context = context;
     }
 
-
+    // Get latitude and longitude coordinates for a given address string using Google's Geocoding API
     public Location getLatLng(Long id, String address) {
         try {
             GeocodingResult result = GeocodingApi.geocode(context, address).await()[0];

@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-
+// Handle operations related to reservations
+// Listing reservations, adding a new reservation, and deleting an existing reservation.
 @Service
 public class ReservationService {
     private final ReservationRepository reservationRepository;
