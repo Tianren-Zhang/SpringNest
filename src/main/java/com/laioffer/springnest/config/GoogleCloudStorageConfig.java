@@ -14,7 +14,7 @@ import java.io.IOException;
 @Configuration
 public class GoogleCloudStorageConfig {
 
-
+    // Init a client object provided by Google Cloud SDK to interact with Google Cloud Storage.
     @Bean
     public Storage storage() throws IOException {
         Credentials credentials = ServiceAccountCredentials.fromStream(getClass().getClassLoader().getResourceAsStream("credentials.json"));

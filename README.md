@@ -8,6 +8,7 @@ With backend services built on Spring Boot, the platform supports essential feat
   <img src="https://raw.githubusercontent.com/Tianren-Zhang/image/twitch/SpringNest/Screenshot%202023-10-07%20at%2016.37.09.png" width="auto" height="400">
   <img src="https://raw.githubusercontent.com/Tianren-Zhang/image/twitch/SpringNest/Screenshot%202023-10-02%20at%2010.18.01.png" width="auto" height="400">
 </p>
+
 ### The App provides several services:
 
 1. When logged in as a host, the dashboard displays accommodations previously uploaded by that host, who also has the capability to upload new lodging options.\
