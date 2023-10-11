@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
+// This annotation makes the class a centralized exception handler.
+// When a specified exception is thrown, the corresponding handler method will be invoked,
+// and an appropriate HTTP response will be returned.
 @ControllerAdvice
 public class CustomExceptionHandler {
 

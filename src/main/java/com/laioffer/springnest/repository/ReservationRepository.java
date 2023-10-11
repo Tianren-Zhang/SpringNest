@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.util.List;
 
-
+// Provide 4 methods that find the Reservation in several cases
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 

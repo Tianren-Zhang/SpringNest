@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+// Provide two HTTP POST endpoints to register users either as guests or hosts.
 @RestController
 public class RegisterController {
 

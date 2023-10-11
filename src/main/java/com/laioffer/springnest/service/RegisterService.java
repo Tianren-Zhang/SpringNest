@@ -9,7 +9,8 @@ import com.laioffer.springnest.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+// Provide a service to register new users.
+// It ensures passwords are encoded before storage and uses a transactional approach to guarantee that the operations are atomic
 @Service
 public class RegisterService {
 
@@ -23,6 +24,7 @@ public class RegisterService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    // All database operations inside the method will either completely succeed or completely fail, ensuring data integrity.
     @Transactional
     public void add(User user, UserRole role) throws UserAlreadyExistException {
         if (userRepository.existsById(user.getUsername())) {
