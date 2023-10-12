@@ -35,12 +35,12 @@ public class StayService {
         this.reservationRepository = reservationRepository;
     }
 
-
+    // It uses the stayRepository to fetch the data based on the provided username.
     public List<Stay> listByUser(String username) {
         return stayRepository.findByHost(new User.Builder().setUsername(username).build());
     }
 
-
+    // Fetches a stay by its ID and associated host or user. If the stay doesn't exist, it throws a StayNotExistException.
     public Stay findByIdAndHost(Long stayId, String username) throws StayNotExistException {
         Stay stay = stayRepository.findByIdAndHost(stayId, new User.Builder().setUsername(username).build());
         if (stay == null) {
@@ -49,7 +49,8 @@ public class StayService {
         return stay;
     }
 
-
+    //  It processes the given images, associates them with the stay, saves the stay in the repository,
+    //  and also uses the geocoding service to get location data and save it.
     @Transactional
     public void add(Stay stay, MultipartFile[] images) {
         List<StayImage> stayImages = Arrays.stream(images)
@@ -66,7 +67,8 @@ public class StayService {
         locationRepository.save(location);
     }
 
-
+    // This method deletes a stay with the given ID and associated host (user).
+    // Before deletion, checks if the stay exists and if there are any active reservations for the stay.
     public void delete(Long stayId, String username) throws StayNotExistException, StayDeleteException {
         Stay stay = stayRepository.findByIdAndHost(stayId, new User.Builder().setUsername(username).build());
         if (stay == null) {
